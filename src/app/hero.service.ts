@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError,  tap } from 'rxjs/operators';
 
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
 import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class HeroService {
   httpOptions = {
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -75,9 +75,8 @@ export class HeroService {
     );
   }
 
-  private handleError<T>(operation = 'operation', result?: T){
+  private handleError<T>(operation: string, result?: T){
     return (error: any): Observable<T> => {
-      console.error(error);
       this.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     };

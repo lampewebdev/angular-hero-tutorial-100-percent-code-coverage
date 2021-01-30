@@ -23,6 +23,7 @@ export class HeroSearchComponent implements OnInit {
   search(term: string): void {
     this.searchTerms.next(term);
   }
+
   ngOnInit(): void {
     this.heroes$ = this.searchTerms.pipe(
       debounceTime(300),
